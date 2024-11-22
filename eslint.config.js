@@ -1,7 +1,8 @@
+const typescriptParser = require("@typescript-eslint/parser");
 module.exports = {
     files: ["src/**/*.{ts,tsx}"],
     languageOptions: {
-        parser: "@typescript-eslint/parser",
+        parser: typescriptParser,
         parserOptions: {
             ecmaVersion: 2021,
             sourceType: "module",
