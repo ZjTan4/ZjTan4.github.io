@@ -7,10 +7,15 @@ module.exports = {
         path: paths.dist, 
         filename: "[name].[contenthash].js",
         clean: true,
-        assetModuleFilename: `${paths.assets}/[hash][ext][query]`
+        assetModuleFilename: "assets/[hash][ext][query]",
     },
     resolve: {
-        extensions: [".tsx", ".ts", ".js"]
+        // align with tsconfig
+        alias: {
+            "@components": paths.components,
+            "@assets": paths.assets,
+        },
+        extensions: [".tsx", ".ts", ".js"],
     },
     module: {
         rules: [

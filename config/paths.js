@@ -6,5 +6,6 @@ module.exports = {
     dist: path.resolve(__dirname, "../dist"),
     public: path.resolve(__dirname, "../public"),
     html: path.resolve(__dirname, "../public/index.html"),
-    assets: "assets"
+    components: path.resolve(__dirname, "../src/components"),
+    assets: path.resolve(__dirname, "../src/assets"),
 };
