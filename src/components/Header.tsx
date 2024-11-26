@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 
+import "@assets/styles/components.css"
+
 interface HeaderProps {
     logoText: string;
     links: { name: string; href: string }[];

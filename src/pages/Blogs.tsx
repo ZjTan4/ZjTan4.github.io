@@ -2,10 +2,10 @@ import React from "react";
 
 import "@assets/styles/layout.css"
 
-const Home : React.FC = () => {
+const Blogs : React.FC = () => {
     return (
-        <div>Home</div>
+        <div>Blogs</div>
     )
 };
 
-export default Home;
+export default Blogs;

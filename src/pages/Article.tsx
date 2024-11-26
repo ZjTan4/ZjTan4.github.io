@@ -2,10 +2,10 @@ import React from "react";
 
 import "@assets/styles/layout.css"
 
-const Home : React.FC = () => {
+const Article : React.FC = () => {
     return (
-        <div>Home</div>
+        <div>Article</div>
     )
 };
 
-export default Home;
+export default Article;

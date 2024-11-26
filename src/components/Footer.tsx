@@ -1,5 +1,7 @@
 import React from "react";
 
+import "@assets/styles/components.css"
+
 interface FooterProps {
     socialLinks: {name: string; href: string}[];
 }
@@ -19,6 +21,6 @@ const Footer: React.FC<FooterProps> = ({ socialLinks }) => {
             </div>
         </footer>
     );
-}
+};
 
 export default Footer;
