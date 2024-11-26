@@ -8,4 +8,6 @@ module.exports = {
     html: path.resolve(__dirname, "../public/index.html"),
     components: path.resolve(__dirname, "../src/components"),
     assets: path.resolve(__dirname, "../src/assets"),
+    pages: path.resolve(__dirname, "../src/pages"),
+    routes: path.resolve(__dirname, "../src/routes"),
 };

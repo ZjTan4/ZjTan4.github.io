@@ -14,6 +14,8 @@ module.exports = {
         alias: {
             "@components": paths.components,
             "@assets": paths.assets,
+            "@pages": paths.pages,
+            "@routes": paths.routes,
         },
         extensions: [".tsx", ".ts", ".js"],
     },

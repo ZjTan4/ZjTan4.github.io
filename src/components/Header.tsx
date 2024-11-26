@@ -22,6 +22,6 @@ const Header: React.FC<HeaderProps> = ({ logoText, links}) => {
             </div>
         </header>
     );
-} ;
+};
 
 export default Header;
