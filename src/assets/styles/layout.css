@@ -16,38 +16,41 @@
     margin-bottom: 2rem;
 }
 
-.card-container {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.floating-card {
-    position: relative;
-    background-color: white;
+/* Project Cards */
+.project-cards {
+    background: white;
+    border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-.floating-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+.project-cards:hover {
+    transform: translateY(-5px);
 }
 
-.floating-card.hovered {
-    background-color: var(--highlight-color);
+/* Skill Cards */
+.skill-cards {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-.connected-line {
+.skill-cards:hover {
+    transform: translateY(-5px);
+}
+
+/* connecting lines */
+.svg-lines {
     position: absolute;
-    border-top: 1px dashed var(--secondary-color);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-}
-
-.connected-line.active {
-    opacity: 1;
-    transition: opacity 0.3s;
+    /* Prevent interfering with card hover */
 }

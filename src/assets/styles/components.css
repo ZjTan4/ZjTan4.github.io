@@ -17,16 +17,21 @@
     text-decoration: underline;
 }
 
-/* Project Cards */
-.project-card {
-    background: white;
-    border: 1px solid #ddd;
+.floating-card {
+    position: relative;
+    background-color: rgb(189, 24, 24);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
+.floating-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.floating-card.hovered {
+    background-color: var(--highlight-color);
 }
