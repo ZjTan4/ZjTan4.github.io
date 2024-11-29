@@ -4,6 +4,8 @@ import App from "../App";
 import Home from "@pages/Home";
 import About from "@pages/About";
 import NotFound from "@pages/NotFound";
+import Blogs from "@pages/Blogs";
+import Projects from "@pages/Projects";
 
 const router = createBrowserRouter([
     {
@@ -11,7 +13,9 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             { path: "", element: <Home /> },
-            { path: "about", element: <About /> }
+            { path: "about", element: <About /> },
+            { path: "blogs", element: <Blogs /> },
+            { path: "projects", element: <Projects /> },
         ]
     },
     {

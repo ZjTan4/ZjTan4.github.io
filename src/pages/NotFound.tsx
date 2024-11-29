@@ -4,7 +4,7 @@ import "@assets/styles/layout.css"
 
 const NotFound : React.FC = () => {
     return (
-        <div>NotFound</div>
+        <div>404 NotFound</div>
     )
 };
 

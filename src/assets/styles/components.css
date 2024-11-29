@@ -25,6 +25,10 @@
     padding: 1rem;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+    /* Allows varying widths while floating */
+    margin: 0.5rem;
+    /* Adds spacing between cards */
 }
 
 .floating-card:hover {
@@ -32,6 +36,18 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.floating-card.hovered {
-    background-color: var(--highlight-color);
+/* Add width variants for different card sizes */
+.floating-card.small {
+    width: 20%;
+    /* Small cards */
+}
+
+.floating-card.medium {
+    width: 40%;
+    /* Medium cards */
+}
+
+.floating-card.large {
+    width: 60%;
+    /* Large cards */
 }

@@ -38,26 +38,40 @@ const Home: React.FC = () => {
         if(!svg) return;
         svg.innerHTML = ""; // clear svg
 
-        const drawLineBetweenCards = (from: HTMLElement | null, to: HTMLElement | null) => {
-            if (!from || !to) return;
-            const fromRect = from.getBoundingClientRect();
-            const toRect = to.getBoundingClientRect();
-            // fetch coordinates
-            const fromX = fromRect.left + fromRect.width / 2;
-            const fromY = fromRect.top + fromRect.height / 2;
-            const toX = toRect.left + toRect.width / 2;
-            const toY = toRect.top + fromRect.height / 2;
-
-            // create line
+        const createLine = (x1: number, y1: number, x2: number, y2: number) => {
             const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-            line.setAttribute("x1", fromX.toString());
-            line.setAttribute("y1", fromY.toString());
-            line.setAttribute("x2", toX.toString());
-            line.setAttribute("y2", toY.toString());
+            line.setAttribute("x1", x1.toString());
+            line.setAttribute("y1", y1.toString());
+            line.setAttribute("x2", x2.toString());
+            line.setAttribute("y2", y2.toString());
             line.setAttribute("stroke", "black");
             line.setAttribute("stroke-dasharray", "4");
             line.setAttribute("stroke-width", "1");
-            svg.appendChild(line);
+            return line;
+        }
+
+        const drawLineBetweenCards = (from: HTMLElement | null, to: HTMLElement | null) => {
+            if (!from || !to) return;
+            const svgRect = svgRef.current!.getBoundingClientRect();
+            const fromRect = from.getBoundingClientRect();
+            const toRect = to.getBoundingClientRect();
+            const upperContainer = fromRect.y < toRect.y ? from.parentElement : to.parentElement;
+            const lowerContainer = fromRect.y >= toRect.y ? from.parentElement : to.parentElement;
+            
+            // compute coordinates
+            // since the svg is embeded in Home instead of the whole page
+            // , add offset to correct the coordinate system
+            const fromX = fromRect.x + (fromRect.width / 2) - svgRect.x;
+            const fromY = fromRect.y < toRect.y ? fromRect.bottom - svgRect.y : fromRect.top - svgRect.y;
+            const toX = toRect.x + (toRect.width / 2) - svgRect.x;
+            const toY = fromRect.y >= toRect.y ? toRect.bottom - svgRect.y : toRect.top - svgRect.y;
+            // mid-line for alignment
+            const middleY = (upperContainer!.getBoundingClientRect().bottom + lowerContainer!.getBoundingClientRect().top) / 2 - svgRect.y;
+
+            // Add line segments
+            svg.appendChild(createLine(fromX, fromY, fromX, middleY)); // Vertical line from "from" card
+            svg.appendChild(createLine(fromX, middleY, toX, middleY)); // Horizontal line connecting midpoints
+            svg.appendChild(createLine(toX, middleY, toX, toY)); // Vertical line to "to" card
         }
         if(hoveredItems.length > 1) {
             const [fromItem, ...toItems] = hoveredItems;
@@ -86,7 +100,7 @@ const Home: React.FC = () => {
                 {/* projects section */}
                 <div className="projects">
                     <h2>Projects</h2>
-                    <div className="project-cards">
+                    <div className="floating-card-container">
                         {projects.map((project) => (
                             <Card
                                 key={project}
@@ -102,7 +116,7 @@ const Home: React.FC = () => {
                 {/* skills section */}
                 <div className="skills">
                     <h2>Skills</h2>
-                    <div className="skill-cards">
+                    <div className="floating-card-container">
                         {skills.map((skill) => (
                             <Card
                                 key={skill}

@@ -10,9 +10,11 @@ const App: React.FC = () => {
             <Header 
                 logoText="ZjTan4"
                 links={[
+                    {name: "Home", href: ""},
                     {name: "About", href: "/about"},
+                    {name: "Blogs", href: "/blogs"},
                     {name: "Projects", href: "/projects"},
-                    {name: "Contacts", href: "/contacts"},
+                    // {name: "Contacts", href: "#contacts"},
                 ]}
             />
             <main className="content">

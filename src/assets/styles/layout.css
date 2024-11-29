@@ -16,32 +16,15 @@
     margin-bottom: 2rem;
 }
 
-/* Project Cards */
-.project-cards {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.project-cards:hover {
-    transform: translateY(-5px);
-}
-
-/* Skill Cards */
-.skill-cards {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.skill-cards:hover {
-    transform: translateY(-5px);
+/* Add a container for wrapping cards */
+.floating-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows wrapping to the next row */
+    gap: 1rem;
+    /* Spacing between cards */
+    justify-content: space-between;
+    /* Align cards with spacing */
 }
 
 /* connecting lines */

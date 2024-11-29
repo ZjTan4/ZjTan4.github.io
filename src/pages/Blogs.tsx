@@ -1,10 +1,16 @@
 import React from "react";
 
 import "@assets/styles/layout.css"
+import Article from "@components/Article";
 
 const Blogs : React.FC = () => {
     return (
-        <div>Blogs</div>
+        <div className="blogs">
+            <div className="side-bar">
+                side bar
+            </div>
+            <Article />
+        </div>
     )
 };
 
