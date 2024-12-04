@@ -51,3 +51,14 @@
     width: 60%;
     /* Large cards */
 }
+
+/* Article */
+.inline-code {
+    background-color: "#f4f4f4";
+    padding: "0.2em";
+}
+
+.block-code {
+    background-color: "#f4f4f4";
+    padding: "1em";
+}
