@@ -37,3 +37,14 @@
     pointer-events: none;
     /* Prevent interfering with card hover */
 }
+
+/* Blogs */
+.article-display {
+    width: "70%"; 
+    padding: "1rem";
+}
+
+.blog-list-item {
+    cursor: "pointer";
+    margin-bottom: "1rem";
+}

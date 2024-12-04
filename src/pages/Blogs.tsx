@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import "@assets/styles/layout.css"
-import Article from "@components/Article";
+import Article, { ArticleDetail } from "@components/Article";
 
 type GitHubIssue = {
     id: number;
@@ -10,14 +10,7 @@ type GitHubIssue = {
     created_at: string;
 };
 
-type Blog = {
-    id: number;
-    title: string;
-    body: string;
-    createdAt: string;
-};
-
-const fetchBlogs = async (): Promise<Blog[]> => {
+const fetchBlogs = async (): Promise<ArticleDetail[]> => {
     const response = await fetch(
         "https://api.github.com/repos/ZjTan4/Hear_my_Voice/issues"
     );
@@ -37,9 +30,15 @@ const fetchBlogs = async (): Promise<Blog[]> => {
 };
 
 const Blogs : React.FC = () => {
-    const [blogs, setBlogs] = useState<Blog[]>([]);
-    const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
-
+    const [blogs, setBlogs] = useState<ArticleDetail[]>([]);
+    const defaultBlog: ArticleDetail = {
+        id: -1,
+        title: "No Blog Selected",
+        body: "Please select a blog from the list.",
+        createdAt: new Date().toISOString(),
+    };
+    const [selectedBlog, setSelectedBlog] = useState<ArticleDetail>(defaultBlog);
+    
     useEffect(() => {
         const loadBlog = async () => {
             try {
@@ -54,14 +53,24 @@ const Blogs : React.FC = () => {
 
     return (
         <div className="blogs">
+            {/* sidebar */}
             <div className="side-bar">
                 {blogs.map((blog) => (
-                    <div>
+                    <li
+                        key={blog.id}
+                        className="blog-list-item"
+                        onClick={() => setSelectedBlog(blog)}
+                    >
                         {blog.title}
-                    </div>
+                    </li>
                 ))}
             </div>
-            <Article />
+            {/* Article Display */}
+            <div className="article-display">
+                <Article 
+                    articleDetail={selectedBlog}
+                />
+            </div>
         </div>
     )
 };
