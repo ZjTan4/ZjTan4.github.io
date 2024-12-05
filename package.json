@@ -22,6 +22,7 @@
   "homepage": "https://github.com/ZjTan4/ZjTan4.github.io#readme",
   "description": "",
   "dependencies": {
+    "axios": "^1.7.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",

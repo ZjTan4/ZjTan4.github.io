@@ -16,6 +16,7 @@ module.exports = {
             "@assets": paths.assets,
             "@pages": paths.pages,
             "@routes": paths.routes,
+            "@utils": paths.utils,
         },
         extensions: [".tsx", ".ts", ".js"],
     },

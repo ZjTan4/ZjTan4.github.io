@@ -3,32 +3,26 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import "@assets/styles/layout.css"
-
-export type ArticleDetail = {
-    id: number;
-    title: string;
-    body: string;
-    createdAt: string;
-};
+import { Blog } from "@utils/types";
 
 interface ArticleProps {
-    articleDetail: ArticleDetail | null;
+    blog: Blog | null;
 }
 
-const Article : React.FC<ArticleProps> = ({articleDetail}) => {
-    if (!articleDetail) {
+const Article : React.FC<ArticleProps> = ({blog}) => {
+    if (!blog) {
         return (
             <p>Select a blog to read. </p>
         )
     }
     return (
         <div>
-            <h1>{articleDetail.title}</h1>
+            <h1>{blog.title}</h1>
             <p>
-                <em>Published on: {new Date(articleDetail.createdAt).toLocaleDateString()}</em>
+                <em>Published on: {new Date(blog.createdAt).toLocaleDateString()}</em>
             </p>
             <ReactMarkdown
-                children={articleDetail.body}
+                children={blog.body}
                 remarkPlugins={[remarkGfm]}
                 components={{
                     // Ensure Return Types Are React Elements

@@ -1,43 +1,19 @@
 import React, { useEffect, useState } from "react";
 
 import "@assets/styles/layout.css"
-import Article, { ArticleDetail } from "@components/Article";
-
-type GitHubIssue = {
-    id: number;
-    title: string;
-    body: string;
-    created_at: string;
-};
-
-const fetchBlogs = async (): Promise<ArticleDetail[]> => {
-    const response = await fetch(
-        "https://api.github.com/repos/ZjTan4/Hear_my_Voice/issues"
-    );
-
-    if (!response.ok) {
-        throw new Error(`Failed to fetch blogs: ${response.statusText}`);
-    }
-
-    const data: GitHubIssue[] = await response.json();
-
-    return data.map((issue) => ({
-        id: issue.id,
-        title: issue.title,
-        body: issue.body,
-        createdAt: issue.created_at,
-    }));
-};
+import Article from "@components/Article";
+import { Blog } from "@utils/types";
+import { fetchBlogs } from "@utils/api";
 
 const Blogs : React.FC = () => {
-    const [blogs, setBlogs] = useState<ArticleDetail[]>([]);
-    const defaultBlog: ArticleDetail = {
+    const [blogs, setBlogs] = useState<Blog[]>([]);
+    const defaultBlog: Blog = {
         id: -1,
         title: "No Blog Selected",
         body: "Please select a blog from the list.",
         createdAt: new Date().toISOString(),
     };
-    const [selectedBlog, setSelectedBlog] = useState<ArticleDetail>(defaultBlog);
+    const [selectedBlog, setSelectedBlog] = useState<Blog>(defaultBlog);
     
     useEffect(() => {
         const loadBlog = async () => {
@@ -68,7 +44,7 @@ const Blogs : React.FC = () => {
             {/* Article Display */}
             <div className="article-display">
                 <Article 
-                    articleDetail={selectedBlog}
+                    blog={selectedBlog}
                 />
             </div>
         </div>

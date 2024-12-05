@@ -1,0 +1,18 @@
+{
+  "projects": [
+    {
+      "id": "portfolio",
+      "name": "Portfolio Website",
+      "skills": ["React", "TypeScript", "CSS"],
+      "description": "A website to showcase my skills and projects.",
+      "url": "https://myportfolio.com"
+    },
+    {
+      "id": "ecommerce",
+      "name": "E-Commerce App",
+      "skills": ["Node.js", "Express", "MongoDB"],
+      "description": "A scalable e-commerce platform with full payment integration.",
+      "url": "https://myecommerceapp.com"
+    }
+  ]
+}
