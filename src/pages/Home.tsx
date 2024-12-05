@@ -2,33 +2,26 @@ import React, { useState, useEffect, useRef } from "react";
 
 import "@assets/styles/layout.css"
 import Card from "@components/Card";
+import { Project } from "@utils/types";
+import { fetchProjects } from "@utils/api";
 
 const Home: React.FC = () => {
     const [hoveredItems, setHoveredItems] = useState<string[]>([]);
+    const [projects, setProjects] = useState<Project[]>([]);
     const svgRef = useRef<SVGSVGElement>(null); // drawing connecting lines
     const itemRefs = useRef<Record<string, HTMLElement | null>>({}); // reference of project/skill cards
-
-    // TODO: dummy values for testing
-    // defines the projects/skills and their corresponding relationship
-    const projectSkillsMapping: { [key: string]: string[] } = {
-        "project 1": ["skill 1", "skill 2"],
-        "project 2": ["skill 1", "skill 3", "skill 4"],
-        "project 3": ["skill 5", "skill 6"],
-        "project 4": ["skill 2", "skill 4", "skill 6"]
-    }
-
-    const projects = Object.keys(projectSkillsMapping);
-    const skills = Array.from(new Set(Object.values(projectSkillsMapping).flat()));
 
     const handleHover = (item: string | null) => {
         if (!item) {
             setHoveredItems([]);
             return;
         }
-        const relatedSkills = projectSkillsMapping[item] || [];
-        const relatedProjects = Object.keys(projectSkillsMapping).filter(
-            project => projectSkillsMapping[project].includes(item)
-        );
+        const relatedSkills = projects
+            .filter((project) => project.name == item)
+            .flatMap((project) => project.skills);
+        const relatedProjects = projects
+            .filter((project) => project.skills.includes(item))
+            .flatMap((project) => project.name);
         setHoveredItems([item, ...relatedSkills, ...relatedProjects]);
     }
     const isHovered = (item: string) => hoveredItems.includes(item);
@@ -90,6 +83,21 @@ const Home: React.FC = () => {
         };
     }, [hoveredItems]);
 
+    useEffect(() => {
+        const loadProjects = async () => {
+            try {
+                const data = await fetchProjects();
+                setProjects(data);
+            } catch(error:any) {
+                console.error("Error fetching projects:", error);
+            }
+        }
+        loadProjects();
+    }, []);
+    const skills = Array.from(
+        new Set(projects.flatMap((project) => project.skills))
+    );
+
     return (
         <div className="hero">
             <header>
@@ -103,12 +111,12 @@ const Home: React.FC = () => {
                     <div className="floating-card-container">
                         {projects.map((project) => (
                             <Card
-                                key={project}
-                                title={project}
-                                onHover={() => handleHover(project)}
+                                key={project.id}
+                                title={project.name}
+                                onHover={() => handleHover(project.name)}
                                 onHoverEnd={() => setHoveredItems([])}
-                                onCardRef={(el) => (itemRefs.current[project] = el)}
-                                isHovered={isHovered(project)}
+                                onCardRef={(el) => (itemRefs.current[project.name] = el)}
+                                isHovered={isHovered(project.name)}
                             />
                         ))}
                     </div>
