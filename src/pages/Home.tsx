@@ -37,9 +37,9 @@ const Home: React.FC = () => {
             line.setAttribute("y1", y1.toString());
             line.setAttribute("x2", x2.toString());
             line.setAttribute("y2", y2.toString());
-            line.setAttribute("stroke", "black");
+            line.setAttribute("stroke", "orange");
             line.setAttribute("stroke-dasharray", "4");
-            line.setAttribute("stroke-width", "1");
+            line.setAttribute("stroke-width", "2");
             return line;
         }
 
@@ -106,8 +106,7 @@ const Home: React.FC = () => {
             </header>
             <section className="floating-section">
                 {/* projects section */}
-                <div className="projects">
-                    <h2>Projects</h2>
+                <div className="projects-container">
                     <div className="floating-card-container">
                         {projects.map((project) => (
                             <Card
@@ -122,8 +121,7 @@ const Home: React.FC = () => {
                     </div>
                 </div>
                 {/* skills section */}
-                <div className="skills">
-                    <h2>Skills</h2>
+                <div className="skills-container">
                     <div className="floating-card-container">
                         {skills.map((skill) => (
                             <Card

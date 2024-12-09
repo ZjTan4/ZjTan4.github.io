@@ -20,6 +20,10 @@ const Blogs : React.FC = () => {
             try {
                 const fetchedBlogs = await fetchBlogs();
                 setBlogs(fetchedBlogs);
+                // if there are blogs, display the first one by default
+                if (fetchedBlogs.length > 0) {
+                    setSelectedBlog(fetchedBlogs[0]);
+                }
             } catch (error) {
                 console.error("Error fetching blogs: ", error);
             }
