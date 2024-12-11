@@ -24,7 +24,6 @@ const Home: React.FC = () => {
             .flatMap((project) => project.name);
         setHoveredItems([item, ...relatedSkills, ...relatedProjects]);
     }
-    const isHovered = (item: string) => hoveredItems.includes(item);
     const drawLines = () => {
         // draw lines with svg
         const svg = svgRef.current;
@@ -115,7 +114,6 @@ const Home: React.FC = () => {
                                 onHover={() => handleHover(project.name)}
                                 onHoverEnd={() => setHoveredItems([])}
                                 onCardRef={(el) => (itemRefs.current[project.name] = el)}
-                                isHovered={isHovered(project.name)}
                             />
                         ))}
                     </div>
@@ -130,15 +128,14 @@ const Home: React.FC = () => {
                                 onHover={() => handleHover(skill)}
                                 onHoverEnd={() => setHoveredItems([])}
                                 onCardRef={(el) => (itemRefs.current[skill] = el)}
-                                isHovered={isHovered(skill)}
                             />
                         ))}
                     </div>
                 </div>
+                {/* render dotted lines to connect project and skills */}
+                <svg ref={svgRef} className="svg-lines" />
             </section>
 
-            {/* render dotted lines to connect project and skills */}
-            <svg ref={svgRef} className="svg-lines" />
         </div>
     )
 };

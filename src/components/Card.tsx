@@ -7,18 +7,24 @@ interface CardProps {
     onHover?: () => void;
     onHoverEnd?: () => void;
     onCardRef?: (node: HTMLElement | null) => void
-    isHovered?: boolean;
 }
 
-const Card: React.FC<CardProps> = ({title, onHover, onHoverEnd, onCardRef, isHovered}) => {
+const Card: React.FC<CardProps> = ({title, onHover, onHoverEnd, onCardRef}) => {
     return (
         <div 
-          className={`floating-card ${isHovered ? "hovered" : ""}`}
-          ref={onCardRef}
-          onMouseEnter={onHover}
-          onMouseLeave={onHoverEnd}
+            className="card-container" 
+            ref={onCardRef}
+            onMouseEnter={onHover}
+            onMouseLeave={onHoverEnd}
         >
-            {title}
+            <div className="floating-card">
+                {title}
+            </div>
+            <div
+                className="hidden"
+            >
+                description here 
+            </div>
         </div>
     )
 }

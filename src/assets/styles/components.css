@@ -14,6 +14,13 @@
     text-decoration: underline;
 }
 
+.card-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+/* Title part (visible by default) */
 .floating-card {
     position: relative;
     background-color: rgb(189, 24, 24);
@@ -21,32 +28,57 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s ease;
     display: inline-block;
-    /* Allows varying widths while floating */
     margin: 0.5rem;
-    /* Adds spacing between cards */
+    z-index: 1;
 }
 
+/* Enhanced hover effect */
 .floating-card:hover {
-    transform: translateY(-4px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Add width variants for different card sizes */
-.floating-card.small {
-    width: 20%;
-    /* Small cards */
+/* Hidden description (initially invisible) */
+.hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(151, 47, 47, 0.9);
+    /* Slightly opaque white */
+    border-radius: 8px;
+    /* Match card's rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /* Start fully hidden */
+    transform: translateY(10px);
+    /* Slight downward offset */
+    pointer-events: none;
+    /* Disable interaction initially */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Smooth fade and slide */
+    z-index: 2;
+    /* Overlay the title part */
 }
 
-.floating-card.medium {
-    width: 40%;
-    /* Medium cards */
+/* Show hidden description on hover */
+.card-container:hover .hidden {
+    opacity: 1;
+    /* Make visible */
+    transform: translateY(0);
+    /* Slide into place */
+    pointer-events: auto;
+    /* Enable interaction */
 }
 
-.floating-card.large {
-    width: 60%;
-    /* Large cards */
+/* Fade out the title when hovering over the card container */
+.card-container:hover .floating-card {
+    opacity: 0;
+    /* Fade out smoothly */
 }
 
 /* Article */
