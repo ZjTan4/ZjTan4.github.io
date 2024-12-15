@@ -11,6 +11,16 @@ export const fetchProjects = async () => {
     }
 };
 
+export const fetchCardInfos = async () => {
+    try {
+        const response = await axios.get("/data/cardInfos.json");
+        return response.data.cardInfos;
+    } catch (error: any) {
+        console.error("Error fetching cardInfo json:", error.response?.data || error.message);
+        throw new Error("Failed to fetch cardInfo json. Please try again later.");
+    }
+};
+
 export const fetchBlogs = async (): Promise<Blog[]> => {
     try {
          const response = await axios.get<GitHubIssue[]>(

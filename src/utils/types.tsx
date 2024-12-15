@@ -19,3 +19,12 @@ export interface Project {
     skills: string[];
     description: string;
 }
+
+export interface CardInfo {
+    id: string;
+    name: string;
+    relatedCard: string[]; // list of ids of related cards
+    shortDescription: string;
+    description: string;
+    url: string;
+}

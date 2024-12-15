@@ -2,14 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 
 import "@assets/styles/layout.css"
 import Card from "@components/Card";
-import { Project } from "@utils/types";
-import { fetchProjects } from "@utils/api";
+import { CardInfo, Project } from "@utils/types";
+import { fetchCardInfos, fetchProjects } from "@utils/api";
 
 const Home: React.FC = () => {
     const [hoveredItems, setHoveredItems] = useState<string[]>([]);
     const [projects, setProjects] = useState<Project[]>([]);
     const svgRef = useRef<SVGSVGElement>(null); // drawing connecting lines
     const itemRefs = useRef<Record<string, HTMLElement | null>>({}); // reference of project/skill cards
+    const cardRefs = useRef<Record<string, CardInfo>>({}); // content used to render the cards
 
     const handleHover = (item: string | null) => {
         if (!item) {
@@ -76,6 +77,7 @@ const Home: React.FC = () => {
     }
 
     useEffect(() => {
+        // effect for drawing the lines on hovering the cards
         drawLines();
         return () => {
             if(svgRef.current) svgRef.current.innerHTML = "";
@@ -83,6 +85,7 @@ const Home: React.FC = () => {
     }, [hoveredItems]);
 
     useEffect(() => {
+        // effect for loading the projects at start
         const loadProjects = async () => {
             try {
                 const data = await fetchProjects();
@@ -97,6 +100,20 @@ const Home: React.FC = () => {
         new Set(projects.flatMap((project) => project.skills))
     );
 
+    useEffect(() => {
+        const loadCardInfos = async () => {
+            try {
+                const data: CardInfo[]  = await fetchCardInfos();
+                data.map((cardInfo) => {
+                    cardRefs.current[cardInfo.id] = cardInfo;
+                });
+            } catch(error:any) {
+                console.error("Error fetching card infos:", error);
+            }
+        }
+        loadCardInfos();
+    }, []);
+
     return (
         <div className="hero">
             <header>
@@ -105,6 +122,35 @@ const Home: React.FC = () => {
             </header>
             <section className="floating-section">
                 {/* projects section */}
+                <div className="web-development-projects-container">
+                    <div className="web-development-projects-content">
+                        <div className="web-development-projects-container-left">
+                            <h2 className="section-title">Web Development</h2>
+                            <p className="project-details">
+                                I worked on various projects involving React, Node.js, and modern web
+                                technologies. Highlights include building responsive UIs and
+                                integrating APIs.
+                            </p>
+                        </div>
+                        <div className="web-development-projects-container-right">
+                            <div className="project-card">
+                                <h3>Project 1: React Dashboard</h3>
+                                <p>
+                                    Developed a real-time dashboard using React and Redux for managing
+                                    business metrics.
+                                </p>
+                            </div>
+                            <div className="project-card">
+                                <h3>Project 2: E-commerce Platform</h3>
+                                <p>
+                                    Built an e-commerce website with Node.js, Express, and MongoDB for
+                                    seamless user experience.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div className="projects-container">
                     <div className="floating-card-container">
                         {projects.map((project) => (
