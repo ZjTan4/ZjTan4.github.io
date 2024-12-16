@@ -1,7 +1,30 @@
 /* Header and Footer */
 .header {
-    background-color: var(--primary-color);
-    padding: 1rem 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    /* Responsive padding for larger screens */
+    @media (min-width: 1024px) {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+    @media (min-width: 1280px) {
+        padding-left: 8rem;
+        padding-right: 8rem;
+    }
+    @media (min-width: 1536px) {
+        padding-left: 11rem;
+        padding-right: 11rem;
+    }
+
+    position: fixed;
+    width: 100%;
+    backdrop-filter: blur(2px);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    z-index: 20;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 1px 0 rgba(128, 128, 128, 0.1);
 }
 
 .header a {
@@ -16,27 +39,44 @@
 
 .card-container {
     position: relative;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
+    margin: 2rem;
 }
 
 /* Title part (visible by default) */
 .floating-card {
     position: relative;
-    background-color: rgb(189, 24, 24);
+    background-color: #4a5568;
+    color: #e2e8f0;;
+    width: 100%;
+    height: 100%;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s ease;
-    display: inline-block;
-    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     z-index: 1;
 }
 
 /* Enhanced hover effect */
 .floating-card:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.floating-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: -1rem;
+}
+
+.floating-card p {
+    font-size: 0.5rem;
+    font-weight: 100;
+    line-height: 1.5;
 }
 
 /* Hidden description (initially invisible) */
@@ -46,39 +86,28 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(151, 47, 47, 0.9);
-    /* Slightly opaque white */
+    background-color: #4a5568;
     border-radius: 8px;
-    /* Match card's rounded corners */
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
-    /* Start fully hidden */
     transform: translateY(10px);
-    /* Slight downward offset */
     pointer-events: none;
-    /* Disable interaction initially */
     transition: opacity 0.3s ease, transform 0.3s ease;
-    /* Smooth fade and slide */
     z-index: 2;
-    /* Overlay the title part */
 }
 
 /* Show hidden description on hover */
 .card-container:hover .hidden {
     opacity: 1;
-    /* Make visible */
     transform: translateY(0);
-    /* Slide into place */
     pointer-events: auto;
-    /* Enable interaction */
 }
 
 /* Fade out the title when hovering over the card container */
 .card-container:hover .floating-card {
     opacity: 0;
-    /* Fade out smoothly */
 }
 
 /* Article */

@@ -30,7 +30,9 @@ const Card: React.FC<CardProps> = ({cardInfo, onHover, onHoverEnd, onCardRef, ch
             <div
                 className="hidden"
             >
-                description here 
+                <p>
+                    {cardInfo.description}
+                </p>
             </div>
         </div>
     )

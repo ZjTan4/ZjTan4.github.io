@@ -3,6 +3,7 @@
 *********************************************/
 /* Hero Section */
 .hero {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,13 +25,16 @@
     margin-bottom: 2rem;
 }
 
+
+/* floating sections */
 .floating-section {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
     align-items: center;
-    padding: 2rem;
+    width: 90%;
+    max-width: 2000px;
+    z-index: 10;
+    padding: 1rem;
     padding-top: 0;
     border-radius: 16px;
 }
@@ -40,9 +44,16 @@
     font-weight: 600;
     color: #ced7e9;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: -1rem;
 }
 
+.section-description {
+    color: #ced7e9;
+    text-align: center;
+    margin-bottom: -2rem;
+}
+
+/* web development section */
 .web-development-projects-container {
     background: #1a202c;
     border-radius: 16px;
@@ -51,7 +62,7 @@
     flex-direction: column;
     gap: 2rem;
     width: 100%;
-    max-width: 1200px;
+    max-width: 2000px;
 }
 
 .web-development-projects-content {
@@ -70,38 +81,29 @@
 .web-development-projects-container-right {
     display: flex;
     flex-direction: column;
+    border-radius: 16px;
+    background: #32405c;
     gap: 1rem;
     flex: 2;
 }
 
-.project-card {
-    background: #4a5568;
-    border-radius: 12px;
-    padding: 1rem;
-    color: #e2e8f0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
+/* skills section */
+.skills-container {
+    background: #1a202c;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+    max-width: 2000px;
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.project-card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.project-card p {
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-.project-details {
-    font-size: 1rem;
-    line-height: 1.75;
+.skills-content {
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+    justify-content: space-between;
 }
 
 /* connecting lines */

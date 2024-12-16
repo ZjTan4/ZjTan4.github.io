@@ -35,6 +35,14 @@
             "description": "A scalable e-commerce platform with full payment integration.",
             "url": "https://myecommerceapp.com", 
             "type": "project"
+        },        {
+            "id": "personal-website",
+            "name": "Personal Website",
+            "shortDescription": "A website to showcase my skills and projects.",
+            "relatedCard": ["javascript", "html/css", "react"],
+            "description": "A scalable e-commerce platform with full payment integration.",
+            "url": "https://myecommerceapp.com", 
+            "type": "project"
         },
         {
             "id": "ecommerce",
@@ -95,7 +103,7 @@
         {
             "id": "javascript",
             "name": "JavaScript",
-            "relatedCard": ["itwêwina-plains-cree-dictionary", "iconnect"],
+            "relatedCard": ["itwêwina-plains-cree-dictionary", "iconnect", "personal-website"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
             "url": "https://myecommerceapp.com", 
@@ -131,7 +139,7 @@
         {
             "id": "html/css",
             "name": "HTML/CSS",
-            "relatedCard": ["itwêwina-plains-cree-dictionary", "iconnect"],
+            "relatedCard": ["itwêwina-plains-cree-dictionary", "iconnect", "personal-website"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
             "url": "https://myecommerceapp.com", 
@@ -158,7 +166,7 @@
         {
             "id": "react", 
             "name": "React",
-            "relatedCard": ["iconnect"],
+            "relatedCard": ["iconnect", "personal-website"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
             "url": "https://myecommerceapp.com", 
