@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 
 import "@assets/styles/layout.css"
-import { fetchProjects } from "@utils/api";
-import { Project } from "@utils/types";
+import { fetchCardInfos } from "@utils/api";
+import { CardInfo } from "@utils/types";
 
 const Projects : React.FC = () => {
-    const [projects, setProjects] = useState<Project[]>([]);
+    const [projects, setProjects] = useState<CardInfo[]>([]);
 
     useEffect(() => {
         const loadProjects = async () => {
             try {
-                const data = await fetchProjects();
-                setProjects(data);
+                const data: CardInfo[] = await fetchCardInfos();
+                setProjects(data.filter((cardInfo) => cardInfo.type == "project"));
             } catch(error:any) {
                 console.error("Error fetching projects:", error);
             }

@@ -1,15 +1,17 @@
 import React from "react";
 
 import "@assets/styles/components.css";
+import { CardInfo } from "@utils/types";
 
 interface CardProps {
-    title: string;
+    cardInfo: CardInfo;
     onHover?: () => void;
     onHoverEnd?: () => void;
-    onCardRef?: (node: HTMLElement | null) => void
+    onCardRef?: (node: HTMLElement | null) => void;
+    children?: React.ReactNode;
 }
 
-const Card: React.FC<CardProps> = ({title, onHover, onHoverEnd, onCardRef}) => {
+const Card: React.FC<CardProps> = ({cardInfo, onHover, onHoverEnd, onCardRef, children}) => {
     return (
         <div 
             className="card-container" 
@@ -18,7 +20,12 @@ const Card: React.FC<CardProps> = ({title, onHover, onHoverEnd, onCardRef}) => {
             onMouseLeave={onHoverEnd}
         >
             <div className="floating-card">
-                {title}
+                {children || (
+                    <>
+                        <h3>{cardInfo.name}</h3>
+                        <p>{cardInfo.shortDescription}</p>
+                    </>
+                )}
             </div>
             <div
                 className="hidden"

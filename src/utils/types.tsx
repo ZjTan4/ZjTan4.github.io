@@ -13,13 +13,6 @@ export interface GitHubIssue {
     created_at: string;
 };
 
-export interface Project {
-    id: string;
-    name: string;
-    skills: string[];
-    description: string;
-}
-
 export interface CardInfo {
     id: string;
     name: string;
@@ -27,4 +20,5 @@ export interface CardInfo {
     shortDescription: string;
     description: string;
     url: string;
+    type: "project" | "skill";
 }

@@ -6,7 +6,8 @@
             "relatedCard": ["python", "C++", "ros", "machine-learning", "pytorch"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A website to showcase my skills and projects.",
-            "url": "https://myportfolio.com"
+            "url": "https://myportfolio.com", 
+            "type": "project"
         }, 
         {
             "id": "itwêwina-plains-cree-dictionary",
@@ -14,7 +15,8 @@
             "relatedCard": ["javascript", "nodejs", "nginx", "django", "html/css"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "project"
         },
         {
             "id": "periodic-trajectory-on-polygonal-surfaces",
@@ -22,7 +24,8 @@
             "relatedCard": ["java", "c++"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "project"
         },
         {
             "id": "iconnect",
@@ -30,7 +33,8 @@
             "shortDescription": "A website to showcase my skills and projects.",
             "relatedCard": ["javascript", "python", "html/css", "react", "mongodb", "firebase"],
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "project"
         },
         {
             "id": "ecommerce",
@@ -38,7 +42,8 @@
             "relatedCard": ["sql", "nodejs"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "project"
         },
         {
             "id": "ibook",
@@ -46,7 +51,8 @@
             "relatedCard": ["java", "android"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "project"
         },
         {
             "id": "machine-learning-research",
@@ -54,7 +60,8 @@
             "relatedCard": ["python", "pytorch", "tensorflow"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "project"
         },
 
 
@@ -64,7 +71,8 @@
             "relatedCard": ["experimental-mobile-robot", "iconnect", "machine-learning-research"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "ros",
@@ -72,7 +80,8 @@
             "relatedCard": ["experimental-mobile-robot"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "machine-learning",
@@ -80,7 +89,8 @@
             "relatedCard": ["experimental-mobile-robot", "machine-learning-research"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "javascript",
@@ -88,7 +98,8 @@
             "relatedCard": ["itwêwina-plains-cree-dictionary", "iconnect"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "nodejs",
@@ -96,7 +107,8 @@
             "relatedCard": ["iconnect", "ecommerce"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "nginx", 
@@ -104,7 +116,8 @@
             "relatedCard": ["itwêwina-plains-cree-dictionary"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "django",
@@ -112,7 +125,8 @@
             "relatedCard": ["itwêwina-plains-cree-dictionary"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "html/css",
@@ -120,7 +134,8 @@
             "relatedCard": ["itwêwina-plains-cree-dictionary", "iconnect"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "java", 
@@ -128,7 +143,8 @@
             "relatedCard": ["periodic-trajectory-on-polygonal-surfaces", "ibook"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "c++",
@@ -136,7 +152,8 @@
             "relatedCard": ["experimental-mobile-robot", "periodic-trajectory-on-polygonal-surfaces"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "react", 
@@ -144,7 +161,8 @@
             "relatedCard": ["iconnect"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "mongoDB",
@@ -152,7 +170,8 @@
             "relatedCard": ["iconnect"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "firebase",
@@ -160,7 +179,8 @@
             "relatedCard": ["iconnect"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "android",
@@ -168,7 +188,8 @@
             "relatedCard": ["ibook"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "sql",
@@ -176,7 +197,8 @@
             "relatedCard": ["ecommerce"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "pytorch",
@@ -184,7 +206,8 @@
             "relatedCard": ["experimental-mobile-robot", "machine-learning-research"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         },
         {
             "id": "tensorflow",
@@ -192,7 +215,8 @@
             "relatedCard": ["experimental-mobile-robot", "machine-learning-research"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
-            "url": "https://myecommerceapp.com"
+            "url": "https://myecommerceapp.com", 
+            "type": "skill"
         }
     ]
 }
