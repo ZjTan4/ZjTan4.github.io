@@ -5,6 +5,42 @@ import Card from "@components/Card";
 import { CardInfo } from "@utils/types";
 import { fetchCardInfos } from "@utils/api";
 
+// this is kinda ugly but it works so I am gonna put it like this for now
+// , should be refactored in future
+enum ConnectionType {
+    STANDARD = 'standard', 
+    LEFT_EDGE = 'left-edge', 
+    RIGHT_EDGE = 'right-edge',
+}
+
+const connectionConfigs: Record<string, Record<string, ConnectionType>> = {
+    "html/css": {
+        "iconnect": ConnectionType.LEFT_EDGE,
+        "itwêwina-plains-cree-dictionary": ConnectionType.LEFT_EDGE
+    },
+    "javascript": {
+        "iconnect": ConnectionType.LEFT_EDGE,
+        "itwêwina-plains-cree-dictionary": ConnectionType.LEFT_EDGE
+    },
+};
+
+const createLine = (x1: number, y1: number, x2: number, y2: number) => {
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    const attributes = {
+        x1: x1.toString(),
+        y1: y1.toString(),
+        x2: x2.toString(),
+        y2: y2.toString(),
+        stroke: "orange",
+        "stroke-dasharray": "4",
+        "stroke-width": "2"
+    };
+    Object.entries(attributes).forEach(([key, value]) => 
+        line.setAttribute(key, value)
+    );
+    return line;
+};
+
 const Home: React.FC = () => {
     const [hoveredItems, setHoveredItems] = useState<string[]>([]);
     const [loaded, setLoaded] = useState<boolean>(false);
@@ -27,54 +63,70 @@ const Home: React.FC = () => {
         const svg = svgRef.current;
         if (!svg) return;
         svg.innerHTML = ""; // clear svg
-
-        const createLine = (x1: number, y1: number, x2: number, y2: number) => {
-            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-            const attributes = {
-                x1: x1.toString(),
-                y1: y1.toString(),
-                x2: x2.toString(),
-                y2: y2.toString(),
-                stroke: "orange",
-                "stroke-dasharray": "4",
-                "stroke-width": "2"
-            };
-            Object.entries(attributes).forEach(([key, value]) => 
-                line.setAttribute(key, value)
-            );
-            return line;
-        };
-
-        const drawLineBetweenCards = (from: HTMLElement | null, to: HTMLElement | null) => {
-            if (!from || !to) return;
+        const drawLineBetweenCards = (fromId: string, toIds: string[]) => {
             const svgRect = svgRef.current!.getBoundingClientRect();
+            const from = cardRefs.current[fromId];
+            if (!from) return;
             const fromRect = from.getBoundingClientRect();
-            const toRect = to.getBoundingClientRect();
-            const upperContainer = fromRect.y < toRect.y ? from.parentElement : to.parentElement;
-            const lowerContainer = fromRect.y >= toRect.y ? from.parentElement : to.parentElement;
 
-            // compute coordinates
-            // since the svg is embedded in Home instead of the whole page
-            // , add offset to correct the coordinate system
-            const fromX = (fromRect.x + fromRect.width / 2) - svgRect.x;
-            const fromY = fromRect.y < toRect.y ? fromRect.bottom - svgRect.y : fromRect.top - svgRect.y;
-            const toX = (toRect.x + toRect.width / 2) - svgRect.x;
-            const toY = fromRect.y >= toRect.y ? toRect.bottom - svgRect.y : toRect.top - svgRect.y;
-            // mid-line for alignment
-            const middleY = (upperContainer!.getBoundingClientRect().bottom + lowerContainer!.getBoundingClientRect().top) / 2 - svgRect.y;
+            toIds.map((toId) => {
+                const to = cardRefs.current[toId];
+                if (!to) return;
+                const connectionType = connectionConfigs[fromId]?.[toId];
+                const toRect = to.getBoundingClientRect();
+                
+                // Get the container sections
+                const fromSection = from.closest('section') || from.parentElement;
+                const toSection = to.closest('section') || to.parentElement;
+                if (!fromSection || !toSection) return;
+                // Calculate the middle point between the sections
+                const fromSectionRect = fromSection.getBoundingClientRect();
+                const toSectionRect = toSection.getBoundingClientRect();
+                // Calculate vertical offset using the bottom of the higher section and top of the lower section
+                const verticalOffset = (Math.min(fromSectionRect.bottom, toSectionRect.bottom) + 
+                                    Math.max(fromSectionRect.top, toSectionRect.top)) / 2 - svgRect.y;
+                const horizontalOffset = 20; // Distance from target's edge
 
-            // Add line segments
-            svg.appendChild(createLine(fromX, fromY, fromX, middleY)); // Vertical line from "from" card
-            svg.appendChild(createLine(fromX, middleY, toX, middleY)); // Horizontal line connecting midpoints
-            svg.appendChild(createLine(toX, middleY, toX, toY)); // Vertical line to "to" card
+                if (connectionType === ConnectionType.LEFT_EDGE) {
+                    // Initial points
+                    const fromX = (fromRect.x + fromRect.width / 2) - svgRect.x;
+                    const fromY = fromRect.y < toRect.y ? fromRect.bottom - svgRect.y : fromRect.top - svgRect.y;
+                    const toX = toRect.x - svgRect.x;
+                    const toY = (toRect.y + toRect.height / 2) - svgRect.y;
+
+                    // Add four line segments
+                    svg.appendChild(createLine(fromX, fromY, fromX, verticalOffset));
+                    svg.appendChild(createLine(fromX, verticalOffset, toX - horizontalOffset, verticalOffset));
+                    svg.appendChild(createLine(toX - horizontalOffset, verticalOffset, toX - horizontalOffset, toY));
+                    svg.appendChild(createLine(toX - horizontalOffset, toY, toX, toY));
+                } else if (connectionType === ConnectionType.RIGHT_EDGE) {
+                    // Initial points
+                    const fromX = (fromRect.x + fromRect.width / 2) - svgRect.x;
+                    const fromY = fromRect.y < toRect.y ? fromRect.bottom - svgRect.y : fromRect.top - svgRect.y;
+                    const toX = (toRect.x + toRect.width) - svgRect.x;
+                    const toY = (toRect.y + toRect.height / 2) - svgRect.y;
+
+                    // Add four line segments
+                    svg.appendChild(createLine(fromX, fromY, fromX, verticalOffset));
+                    svg.appendChild(createLine(fromX, verticalOffset, toX + horizontalOffset, verticalOffset));
+                    svg.appendChild(createLine(toX + horizontalOffset, verticalOffset, toX + horizontalOffset, toY));
+                    svg.appendChild(createLine(toX + horizontalOffset, toY, toX, toY));
+                } else {
+                    const fromX = (fromRect.x + fromRect.width / 2) - svgRect.x;
+                    const fromY = fromRect.y < toRect.y ? fromRect.bottom - svgRect.y : fromRect.top - svgRect.y;
+                    const toX = (toRect.x + toRect.width / 2) - svgRect.x;
+                    const toY = fromRect.y >= toRect.y ? toRect.bottom - svgRect.y : toRect.top - svgRect.y;
+                    
+                    // Add three line segments
+                    svg.appendChild(createLine(fromX, fromY, fromX, verticalOffset));
+                    svg.appendChild(createLine(fromX, verticalOffset, toX, verticalOffset));
+                    svg.appendChild(createLine(toX, verticalOffset, toX, toY));
+                }
+            });
         };
         if (hoveredItems.length > 1) {
             const [fromItem, ...toItems] = hoveredItems;
-            toItems.forEach((toItem) => {
-                const fromCard = cardRefs.current[fromItem];
-                const toCard = cardRefs.current[toItem];
-                drawLineBetweenCards(fromCard, toCard);
-            });
+            drawLineBetweenCards(fromItem, toItems);
         }
     };
 
@@ -148,10 +200,10 @@ const Home: React.FC = () => {
                 </div>
             </section>
             <section className="floating-section">
-                <div className="skills-container">  
-                    {/* program lanuages */}
+                <div className="skills-container">
+                    {/* programing */}
                     {loaded ? (
-                        <div className="skills-content">
+                        <div className="skills-container-row">
                             <Card
                                 cardInfo={cardInfoRefs.current["javascript"]}
                                 onHover={() => handleHover("javascript")}
@@ -166,10 +218,35 @@ const Home: React.FC = () => {
                                 onCardRef={(el) => (cardRefs.current["python"] = el)}
                             />
                             <Card
-                                cardInfo={cardInfoRefs.current["machine-learning"]}
-                                onHover={() => handleHover("machine-learning")}
+                                cardInfo={cardInfoRefs.current["java"]}
+                                onHover={() => handleHover("java")}
                                 onHoverEnd={() => setHoveredItems([])}
-                                onCardRef={(el) => (cardRefs.current["machine-learning"] = el)}
+                                onCardRef={(el) => (cardRefs.current["java"] = el)}
+                            />
+                            <Card
+                                cardInfo={cardInfoRefs.current["c++"]}
+                                onHover={() => handleHover("c++")}
+                                onHoverEnd={() => setHoveredItems([])}
+                                onCardRef={(el) => (cardRefs.current["c++"] = el)}
+                            />
+                        </div>
+                    ) : (
+                        <p>Loading card...</p>
+                    )}
+                    {loaded ? (
+                        <div className="skills-container-row">
+                            <Card
+                                cardInfo={cardInfoRefs.current["html/css"]}
+                                onHover={() => handleHover("html/css")}
+                                onHoverEnd={() => setHoveredItems([])}
+                                onCardRef={(el) => (cardRefs.current["html/css"] = el)}
+                            >
+                            </Card>
+                            <Card
+                                cardInfo={cardInfoRefs.current["sql"]}
+                                onHover={() => handleHover("sql")}
+                                onHoverEnd={() => setHoveredItems([])}
+                                onCardRef={(el) => (cardRefs.current["sql"] = el)}
                             />
                         </div>
                     ) : (
