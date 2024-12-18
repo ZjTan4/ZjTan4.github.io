@@ -71,15 +71,21 @@
             "url": "https://myecommerceapp.com", 
             "type": "project"
         },
-
-
         {
-            "id": "python",
-            "name": "Python",
-            "relatedCard": ["experimental-mobile-robot", "iconnect", "machine-learning-research"],
+            "id": "machine-learning-research1",
+            "name": "Machine learning research1",
+            "relatedCard": ["python", "pytorch", "tensorflow"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",
             "url": "https://myecommerceapp.com", 
+            "type": "project"
+        },
+        {
+            "id": "python",
+            "name": "Python",
+            "relatedCard": ["experimental-mobile-robot", "iconnect", "machine-learning-research", "machine-learning-research1"],
+            "shortDescription": "A website to showcase my skills and projects.",
+            "description": "A scalable e-commerce platform with full payment integration.",
             "type": "skill"
         },
         {

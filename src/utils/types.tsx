@@ -19,6 +19,7 @@ export interface CardInfo {
     relatedCard: string[]; // list of ids of related cards
     shortDescription: string;
     description: string;
-    url: string;
+    url: string | null;
+    imageUrl: string | null;
     type: "project" | "skill";
 }

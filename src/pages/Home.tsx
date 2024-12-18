@@ -22,6 +22,11 @@ const connectionConfigs: Record<string, Record<string, ConnectionType>> = {
         "iconnect": ConnectionType.LEFT_EDGE,
         "itwêwina-plains-cree-dictionary": ConnectionType.LEFT_EDGE
     },
+    "python": {
+        "experimental-mobile-robot": ConnectionType.RIGHT_EDGE,
+        "machine-learning-research": ConnectionType.RIGHT_EDGE, 
+        "machine-learning-research1": ConnectionType.RIGHT_EDGE,
+    },
 };
 
 const createLine = (x1: number, y1: number, x2: number, y2: number) => {
@@ -154,7 +159,7 @@ const Home: React.FC = () => {
 
     return (
         <div className="hero">
-            <header>
+            <header className="main-header">
                 <h1>Zijie Tan</h1>
                 <p>ztan4@ualberta.ca</p>
             </header>
@@ -163,7 +168,7 @@ const Home: React.FC = () => {
                 <div className="web-development-projects-container">
                     <div className="web-development-projects-content">
                         <div className="web-development-projects-container-left">
-                            <h2 className="section-title">Web Development</h2>
+                            <h2 className="section-title">Web Developer</h2>
                             <p className="section-description">hello hello hello hello hello hello hello hello</p>
                             {loaded ? (
                                 <Card 
@@ -252,6 +257,69 @@ const Home: React.FC = () => {
                     ) : (
                         <p>Loading card...</p>
                     )}
+                </div>
+            </section>
+            <section className="floating-section">
+                <div className="work-container">
+                    <div className="work-container-left">
+                        <div>
+                            <span>AI Researcher</span>
+                        </div>
+                        {loaded ? (
+                            <div className="ai-research-container">
+                                <Card
+                                    cardInfo={cardInfoRefs.current["machine-learning-research"]}
+                                    onHover={() => handleHover("machine-learning-research")}
+                                    onHoverEnd={() => setHoveredItems([])}
+                                    onCardRef={(el) => (cardRefs.current["machine-learning-research"] = el)}
+                                />
+                                <Card
+                                    cardInfo={cardInfoRefs.current["experimental-mobile-robot"]}
+                                    onHover={() => handleHover("experimental-mobile-robot")}
+                                    onHoverEnd={() => setHoveredItems([])}
+                                    onCardRef={(el) => (cardRefs.current["experimental-mobile-robot"] = el)}
+                                />
+                                <Card
+                                    cardInfo={cardInfoRefs.current["machine-learning-research1"]}
+                                    onHover={() => handleHover("machine-learning-research1")}
+                                    onHoverEnd={() => setHoveredItems([])}
+                                    onCardRef={(el) => (cardRefs.current["machine-learning-research1"] = el)}
+                                />
+                            </div>
+                        ) : (
+                            <p>Loading card...</p>
+                        )}
+                    </div>
+                    <div className="work-container-right">
+                        <div>
+                            <span>Software Developer</span>
+                        </div>
+                        {loaded ? (
+                            <div className="software-development-container">
+                                <Card
+                                    cardInfo={cardInfoRefs.current["periodic-trajectory-on-polygonal-surfaces"]}
+                                    onHover={() => handleHover("periodic-trajectory-on-polygonal-surfaces")}
+                                    onHoverEnd={() => setHoveredItems([])}
+                                    onCardRef={(el) => (cardRefs.current["periodic-trajectory-on-polygonal-surfaces"] = el)}
+                                />
+                                <Card
+                                    cardInfo={cardInfoRefs.current["ibook"]}
+                                    onHover={() => handleHover("ibook")}
+                                    onHoverEnd={() => setHoveredItems([])}
+                                    onCardRef={(el) => (cardRefs.current["ibook"] = el)}
+                                />
+                            </div>
+                        ) : (
+                            <p>Loading card...</p>
+                        )}
+                        <div>
+                            <div className="game-code-container">
+                                <div className="game-code-text">
+                                    Work
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
             {/* render dotted lines to connect project and skills */}

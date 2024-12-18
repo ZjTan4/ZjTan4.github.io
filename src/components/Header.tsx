@@ -8,12 +8,10 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ logoText, links}) => {
-    const [menuOpen, setMenuOpen] = useState(false);
-
     return (
         <header className="header">
-            <div className="container flex-between">
-                <div className="logo">{logoText}</div>
+            <div className="container">
+                <div>{logoText}</div>
                 <nav>
                     {links.map((link, index) => (
                         <a key={index} href={link.href}>
