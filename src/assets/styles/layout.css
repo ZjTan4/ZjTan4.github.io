@@ -4,6 +4,7 @@
 /* Hero Section */
 .hero {
     min-height: 100vh;
+    padding-top: 80px; /* match the header height */
     position: relative;
     width: 100%;
     z-index: 0;
@@ -19,10 +20,17 @@
     margin-bottom: 2rem;
 }
 
+.main-header {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .main-header h1 {
     color: white;
 }
-
 .main-header p {
     color: white;
 }
@@ -39,6 +47,8 @@
     padding-top: 0;
     border-radius: 16px;
     margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .section-title {
@@ -146,55 +156,50 @@
     padding: 1rem;
 }
 
-.software-development-container {    
-    background: var(--background-color);
-    border-radius: 16px;
+.software-development-container{
+    border-radius: 16px;    
+}
+.software-development-content {    
     width: 100%;
     display: flex;
     flex-direction: row;
     gap: 20px;
     padding: 1rem;
+    box-sizing: border-box;
 }
-.software-development-container>* {
+.software-development-content>* {
     flex: 1;
     min-width: 0;
 }
 
 /* Outer Container */
-.game-code-container {
+.work-title-container {
     flex: 1;
     height: 100%;
     display: none;
-    /* Hidden by default */
     justify-content: center;
     align-items: center;
-    background-color: #1f2937;
-    /* Dark background */
+    background-color: var(--background-color);
     border-radius: 1.5rem;
-    /* Large rounded corners */
 }
 
 @media (min-width: 1024px) {
-    .game-code-container {
+    .work-title-container {
         display: flex;
         /* Visible on large screens and above */
     }
 }
 
 /* Inner Text */
-.game-code-text {
+.work-title-container-text {
     font-weight: 600;
-    /* Semi-bold */
-    color: #f97316;
-    /* Orange text color */
+    color: var(--highlight-color);
     font-size: 3.75rem;
-    /* Large text size */
     height: fit-content;
-    /* Adapts to content */
 }
 
 @media (min-width: 1280px) {
-    .game-code-text {
+    .work-title-container-text {
         font-size: 6rem;
         /* Larger text for extra-large screens */
     }

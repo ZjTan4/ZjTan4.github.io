@@ -108,7 +108,7 @@
         },
         {
             "id": "javascript",
-            "name": "JavaScript",
+            "name": "JavaScript/Typescript",
             "relatedCard": ["itwêwina-plains-cree-dictionary", "iconnect", "personal-website"],
             "shortDescription": "A website to showcase my skills and projects.",
             "description": "A scalable e-commerce platform with full payment integration.",

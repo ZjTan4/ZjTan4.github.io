@@ -38,7 +38,7 @@ const createLine = (x1: number, y1: number, x2: number, y2: number) => {
         y2: y2.toString(),
         stroke: "orange",
         "stroke-dasharray": "4",
-        "stroke-width": "2"
+        "stroke-width": "4"
     };
     Object.entries(attributes).forEach(([key, value]) => 
         line.setAttribute(key, value)
@@ -165,7 +165,7 @@ const Home: React.FC = () => {
             </header>
             <section className="floating-section">
                 {/* web development */}
-                <div className="web-development-projects-container">
+                <div className="web-development-projects-container frost-glass">
                     <div className="web-development-projects-content">
                         <div className="web-development-projects-container-left">
                             <h2 className="section-title">Web Developer</h2>
@@ -204,10 +204,10 @@ const Home: React.FC = () => {
                     </div>
                 </div>
             </section>
-            <section className="floating-section">
-                <div className="skills-container">
-                    {/* programing */}
-                    {loaded ? (
+            <section className="floating-section">    
+                {loaded ? (
+                    <div className="skills-container">
+                        {/* programing */}
                         <div className="skills-container-row">
                             <Card
                                 cardInfo={cardInfoRefs.current["javascript"]}
@@ -235,10 +235,6 @@ const Home: React.FC = () => {
                                 onCardRef={(el) => (cardRefs.current["c++"] = el)}
                             />
                         </div>
-                    ) : (
-                        <p>Loading card...</p>
-                    )}
-                    {loaded ? (
                         <div className="skills-container-row">
                             <Card
                                 cardInfo={cardInfoRefs.current["html/css"]}
@@ -254,17 +250,15 @@ const Home: React.FC = () => {
                                 onCardRef={(el) => (cardRefs.current["sql"] = el)}
                             />
                         </div>
-                    ) : (
-                        <p>Loading card...</p>
-                    )}
-                </div>
+                    </div>
+                ) : (
+                    <p>Loading card...</p>
+                )}
             </section>
             <section className="floating-section">
                 <div className="work-container">
-                    <div className="work-container-left">
-                        <div>
-                            <span>AI Researcher</span>
-                        </div>
+                    <div className="work-container-left frost-glass">
+                        <p>AI Researcher</p>
                         {loaded ? (
                             <div className="ai-research-container">
                                 <Card
@@ -291,32 +285,30 @@ const Home: React.FC = () => {
                         )}
                     </div>
                     <div className="work-container-right">
-                        <div>
-                            <span>Software Developer</span>
-                        </div>
-                        {loaded ? (
-                            <div className="software-development-container">
-                                <Card
-                                    cardInfo={cardInfoRefs.current["periodic-trajectory-on-polygonal-surfaces"]}
-                                    onHover={() => handleHover("periodic-trajectory-on-polygonal-surfaces")}
-                                    onHoverEnd={() => setHoveredItems([])}
-                                    onCardRef={(el) => (cardRefs.current["periodic-trajectory-on-polygonal-surfaces"] = el)}
-                                />
-                                <Card
-                                    cardInfo={cardInfoRefs.current["ibook"]}
-                                    onHover={() => handleHover("ibook")}
-                                    onHoverEnd={() => setHoveredItems([])}
-                                    onCardRef={(el) => (cardRefs.current["ibook"] = el)}
-                                />
-                            </div>
-                        ) : (
-                            <p>Loading card...</p>
-                        )}
-                        <div>
-                            <div className="game-code-container">
-                                <div className="game-code-text">
-                                    Work
+                        <div className="software-development-container frost-glass">
+                            <p>Software Developer</p>
+                            {loaded ? (
+                                <div className="software-development-content">
+                                    <Card
+                                        cardInfo={cardInfoRefs.current["periodic-trajectory-on-polygonal-surfaces"]}
+                                        onHover={() => handleHover("periodic-trajectory-on-polygonal-surfaces")}
+                                        onHoverEnd={() => setHoveredItems([])}
+                                        onCardRef={(el) => (cardRefs.current["periodic-trajectory-on-polygonal-surfaces"] = el)}
+                                    />
+                                    <Card
+                                        cardInfo={cardInfoRefs.current["ibook"]}
+                                        onHover={() => handleHover("ibook")}
+                                        onHoverEnd={() => setHoveredItems([])}
+                                        onCardRef={(el) => (cardRefs.current["ibook"] = el)}
+                                    />
                                 </div>
+                            ) : (
+                                <p>Loading card...</p>
+                            )}
+                        </div>
+                        <div className="work-title-container">
+                            <div className="work-title-container-text">
+                                Work
                             </div>
                         </div>
                     </div>
