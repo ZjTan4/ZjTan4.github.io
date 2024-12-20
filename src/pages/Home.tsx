@@ -4,9 +4,11 @@ import "@assets/styles/layout.css";
 import Card from "@components/Card";
 import { CardInfo } from "@utils/types";
 import { fetchCardInfos } from "@utils/api";
+import RevealSection from "@components/RevealSection";
+import WelcomeSection from "@components/Welcome";
 
 // this is kinda ugly but it works so I am gonna put it like this for now
-// , should be refactored in future
+// , should be refactored in future TODO
 enum ConnectionType {
     STANDARD = 'standard', 
     LEFT_EDGE = 'left-edge', 
@@ -49,9 +51,11 @@ const createLine = (x1: number, y1: number, x2: number, y2: number) => {
 const Home: React.FC = () => {
     const [hoveredItems, setHoveredItems] = useState<string[]>([]);
     const [loaded, setLoaded] = useState<boolean>(false);
+    // hooks
     const svgRef = useRef<SVGSVGElement>(null); // drawing connecting lines
     const cardRefs = useRef<Record<string, HTMLElement | null>>({}); // reference of project/skill cards
     const cardInfoRefs = useRef<Record<string, CardInfo>>({}); // content used to render the cards
+    const scrollRef = useRef<HTMLDivElement>(null);
 
     const handleHover = (cardId: string | null) => {
         if (!cardId || !loaded) {
@@ -136,6 +140,7 @@ const Home: React.FC = () => {
     };
 
     useEffect(() => {
+        // draw lines
         drawLines();
         return () => {
             if (svgRef.current) svgRef.current.innerHTML = "";
@@ -143,6 +148,7 @@ const Home: React.FC = () => {
     }, [hoveredItems]);
 
     useEffect(() => {
+        // load card information
         const loadCardInfos = async () => {
             try {
                 const data: CardInfo[] = await fetchCardInfos();
@@ -157,13 +163,34 @@ const Home: React.FC = () => {
         loadCardInfos();
     }, []);
 
+    useEffect(() => {
+        // handle scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && scrollRef.current) {
+                    scrollRef.current.classList.add("revealed");
+                } else {
+                    scrollRef.current?.classList.remove("revealed");
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px"
+        });
+        if (scrollRef.current) {
+            observer.observe(scrollRef.current);
+        }
+        return () => {
+            if (scrollRef.current) {
+                observer.unobserve(scrollRef.current);
+            }
+        };
+    }, []);
+
     return (
         <div className="hero">
-            <header className="main-header">
-                <h1>Zijie Tan</h1>
-                <p>ztan4@ualberta.ca</p>
-            </header>
-            <section className="floating-section">
+            <WelcomeSection />
+            <RevealSection>
                 {/* web development */}
                 <div className="web-development-projects-container frost-glass">
                     <div className="web-development-projects-content">
@@ -203,8 +230,8 @@ const Home: React.FC = () => {
                         </div>
                     </div>
                 </div>
-            </section>
-            <section className="floating-section">    
+            </RevealSection>
+            <RevealSection>
                 {loaded ? (
                     <div className="skills-container">
                         {/* programing */}
@@ -254,8 +281,8 @@ const Home: React.FC = () => {
                 ) : (
                     <p>Loading card...</p>
                 )}
-            </section>
-            <section className="floating-section">
+            </RevealSection>
+            <RevealSection>
                 <div className="work-container">
                     <div className="work-container-left frost-glass">
                         <p>AI Researcher</p>
@@ -313,7 +340,7 @@ const Home: React.FC = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </RevealSection>
             {/* render dotted lines to connect project and skills */}
             <svg ref={svgRef} className="svg-lines" />
         </div>

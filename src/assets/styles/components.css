@@ -109,6 +109,44 @@
     opacity: 0;
 }
 
+/* floating sections */
+.floating-section {
+    position: relative;
+    align-items: center;
+    width: 90%;
+    max-width: 2000px;
+    padding: 1rem;
+    gap: 2rem;
+    padding-top: 0;
+    border-radius: 16px;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 10;
+    /* for animation */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 0.6s ease-out;
+}
+.floating-section.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ced7e9;
+    text-align: center;
+    margin-bottom: -1rem;
+}
+
+.section-description {
+    color: #ced7e9;
+    text-align: center;
+    margin-bottom: -2rem;
+}
+
 /* Article */
 .inline-code {
     background-color: "#f4f4f4";
