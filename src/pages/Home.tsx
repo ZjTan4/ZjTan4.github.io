@@ -321,7 +321,8 @@ const Home: React.FC = () => {
                                         onHover={() => handleHover("periodic-trajectory-on-polygonal-surfaces")}
                                         onHoverEnd={() => setHoveredItems([])}
                                         onCardRef={(el) => (cardRefs.current["periodic-trajectory-on-polygonal-surfaces"] = el)}
-                                    />
+                                    >
+                                    </Card>
                                     <Card
                                         cardInfo={cardInfoRefs.current["ibook"]}
                                         onHover={() => handleHover("ibook")}

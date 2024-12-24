@@ -36,20 +36,27 @@ const Card: React.FC<CardProps> = ({cardInfo, onHover, onHoverEnd, onCardRef, ch
             onClick={handleClick}
             style={{ cursor: cardInfo.url ? 'pointer' : 'default' }}
         >
-            <div className="floating-card">
-                {children || (
-                    <>
-                        <h3>{cardInfo.name}</h3>
-                        <p>{cardInfo.shortDescription}</p>
-                    </>
-                )}
-            </div>
+            {cardInfo.imageUrl ? (
+                <div className="image-floating-card">
+                    <img 
+                        src={cardInfo.imageUrl} 
+                        alt={cardInfo.name} 
+                    />
+                </div>
+            ) : (
+                <div className="floating-card">
+                    <h3>{cardInfo.name}</h3>
+                    <p>{cardInfo.shortDescription}</p>
+                </div>
+            )}
             <div
                 className="hidden"
             >
-                <p>
-                    {cardInfo.description}
-                </p>
+                {children || (
+                    <p>
+                        {cardInfo.description}
+                    </p>
+                )}
             </div>
         </div>
     )
