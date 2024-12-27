@@ -1,8 +1,7 @@
 /********************************************* 
 *                   Home                     * 
 *********************************************/
-/* Hero Section */
-.hero {
+.home-container {
     min-height: 100vh;
     padding-top: 80px; /* match the header height */
     position: relative;
@@ -11,12 +10,12 @@
     z-index: 0;
 }
 
-.hero h1 {
+.home-container h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
 }
 
-.hero p {
+.home-container p {
     font-size: 1.25rem;
     margin-bottom: 2rem;
 }

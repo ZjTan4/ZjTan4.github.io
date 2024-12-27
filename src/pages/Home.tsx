@@ -188,7 +188,7 @@ const Home: React.FC = () => {
     }, []);
 
     return (
-        <div className="hero">
+        <div className="home-container">
             <WelcomeSection />
             <RevealSection>
                 {/* web development */}
