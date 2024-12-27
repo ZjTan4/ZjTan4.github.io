@@ -9,30 +9,13 @@
     width: 80%;
     z-index: 0;
 }
-
 .home-container h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
 }
-
 .home-container p {
     font-size: 1.25rem;
     margin-bottom: 2rem;
-}
-
-.main-header {
-    text-align: center;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.main-header h1 {
-    color: white;
-}
-.main-header p {
-    color: white;
 }
 
 /* web development section */
