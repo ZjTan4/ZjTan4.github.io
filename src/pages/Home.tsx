@@ -55,7 +55,6 @@ const Home: React.FC = () => {
     const svgRef = useRef<SVGSVGElement>(null); // drawing connecting lines
     const cardRefs = useRef<Record<string, HTMLElement | null>>({}); // reference of project/skill cards
     const cardInfoRefs = useRef<Record<string, CardInfo>>({}); // content used to render the cards
-    const scrollRef = useRef<HTMLDivElement>(null);
 
     const handleHover = (cardId: string | null) => {
         if (!cardId || !loaded) {
@@ -161,30 +160,6 @@ const Home: React.FC = () => {
             }
         };
         loadCardInfos();
-    }, []);
-
-    useEffect(() => {
-        // handle scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting && scrollRef.current) {
-                    scrollRef.current.classList.add("revealed");
-                } else {
-                    scrollRef.current?.classList.remove("revealed");
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: "0px"
-        });
-        if (scrollRef.current) {
-            observer.observe(scrollRef.current);
-        }
-        return () => {
-            if (scrollRef.current) {
-                observer.unobserve(scrollRef.current);
-            }
-        };
     }, []);
 
     return (
