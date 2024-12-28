@@ -7,7 +7,7 @@ interface RevealSectionProps {
 }
 
 const RevealSection: React.FC<RevealSectionProps> = ({ children }) => {
-    const sectionRef =useRef<HTMLElement>(null);
+    const sectionRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(

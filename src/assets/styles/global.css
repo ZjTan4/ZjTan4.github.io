@@ -13,17 +13,9 @@
 
 html,
 body {
-    height: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    overflow-y: scroll;
     overflow-x: hidden;
-    /* Prevent horizontal scrolling */
-}
-
-body {
-    background-color: var(--background-color);
 }
 
 main {
@@ -52,6 +44,8 @@ main {
 /* Utility Classes */
 .content {
     background-color: var(--primary-color);
+    margin: 0 auto;
+    padding: 80px 1rem;
 }
 .container {
     margin: 0 auto;

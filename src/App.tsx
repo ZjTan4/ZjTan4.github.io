@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 
 import Header from "@components/Header";
 import Footer from "@components/Footer";
+import Viewbox from "@components/Viewbox";
 
 const App: React.FC = () => {
     return (
@@ -17,15 +18,17 @@ const App: React.FC = () => {
                     // {name: "Contacts", href: "#contacts"},
                 ]}
             />
-            <main className="content">
-                <Outlet></Outlet>
-            </main>
-            <Footer 
-                socialLinks={[
-                    {name: "Github", href: ""},
-                    {name: "LinkedIn", href: ""},
-                ]}
-            />
+            <Viewbox>
+                <main className="content">
+                    <Outlet></Outlet>                
+                </main>
+                <Footer 
+                    socialLinks={[
+                        {name: "Github", href: ""},
+                        {name: "LinkedIn", href: ""},
+                    ]}
+                />
+            </Viewbox>
         </div>
     );
 };

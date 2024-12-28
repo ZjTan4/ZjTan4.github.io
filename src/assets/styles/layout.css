@@ -1,13 +1,31 @@
+@import "./global.css";
+
 /********************************************* 
 *                   Home                     * 
 *********************************************/
 .home-container {
     min-height: 100vh;
+    max-width: 1200px;
     padding-top: 80px; /* match the header height */
     position: relative;
     gap: 1rem;
-    width: 80%;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
     z-index: 0;
+    
+    @media (min-width: 1024px) {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+    @media (min-width: 1280px) {
+        padding-left: 8rem;
+        padding-right: 8rem;
+    }
+    @media (min-width: 1536px) {
+        padding-left: 11rem;
+        padding-right: 11rem;
+    }
 }
 .home-container h1 {
     font-size: 3rem;
