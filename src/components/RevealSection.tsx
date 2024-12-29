@@ -22,7 +22,7 @@ const RevealSection: React.FC<RevealSectionProps> = ({ children }) => {
             },
             { 
                 threshold: 0.01,
-                rootMargin: '200px 0px -50px 0px'
+                rootMargin: '0px 0px 0px 0px'
             }
         );
 
