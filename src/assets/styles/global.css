@@ -24,8 +24,6 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: url('@assets/images/background.jpg') no-repeat center center fixed;
-    background-size: cover;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -43,7 +41,6 @@ main {
 
 /* Utility Classes */
 .content {
-    background-color: var(--primary-color);
     margin: 0 auto;
     padding: 80px 1rem;
 }
@@ -54,9 +51,8 @@ main {
 
 /* Frost glass effect */
 .frost-glass {
-    background: rgba(var(--background-color), 0.1);
+    background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(var(--text-color), 0.2);
-    box-shadow: 0 4px 6px rgba(var(--shadow-color), 0.1);
+    border-radius: 8px;
 }

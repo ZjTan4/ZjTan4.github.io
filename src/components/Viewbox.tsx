@@ -43,6 +43,7 @@ const Viewbox: React.FC<ViewboxProps> = ({ children }) => {
 
     return (
         <div className="viewbox">
+            <div className="background-layer"></div>
             <div 
                 ref={scrollBoxRef} 
                 className="scrollbox"
