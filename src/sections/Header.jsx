@@ -22,7 +22,11 @@ const Header = ({menuOpen, setMenuOpen}) => {
 
     return (
         <>
-            <header className="fixed top-0 z-10 w-full px-4 py-4">
+            <motion.header 
+                className="fixed top-0 z-10 w-full px-4 py-4"
+                initial="hidden"
+                animate="visible"
+            >
                 <nav className="container flex items-center justify-between rounded-full border-2 border-white/10 bg-white/5 p-2 backdrop-blur">
                     <motion.div 
                         className="flex items-center"
@@ -76,7 +80,7 @@ const Header = ({menuOpen, setMenuOpen}) => {
                         {menuOpen ? <BiX /> : <BiMenuAltRight />}
                     </motion.button>
                 </nav>
-            </header>
+            </motion.header>
             
             {/* Overlay for mobile menu */}
             {menuOpen && (

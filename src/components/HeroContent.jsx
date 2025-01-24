@@ -1,9 +1,14 @@
 import React from "react";
 import Button from "./Button";
 
-const HeroContent = () => {
+import { motion } from "framer-motion";
+
+const HeroContent = ( {variants} ) => {
     return (
-        <div className="text-left md:max-w-72 lg:max-w-lg">
+        <motion.div 
+            className="text-left md:max-w-72 lg:max-w-lg"
+            variants={variants}
+        >
             <p className="text-xl font-medium text-blue-300">
                 Zijie Tan [TODO: Website WIP]
             </p>
@@ -27,7 +32,7 @@ const HeroContent = () => {
                     Get CV
                 </Button>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
