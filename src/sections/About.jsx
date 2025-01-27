@@ -3,6 +3,8 @@ import SectionTitle from "../components/SectionTitle";
 import userImage from "../assets/user.jpg";
 import Button from "../components/Button";
 
+import { motion } from "framer-motion";
+
 const About = () => {
     return (
         <section className="py-16" id="about">
